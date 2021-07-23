@@ -7,13 +7,14 @@
 <table class="table table-striped table-bordered" style="width:100%">
     <thead>
         <tr>
-            <th>Title</th>
-            <th>Price</th>
+            <th (click)="sort('title')">Title &nbsp; <i class="fa fa-sort"></i></th>
+            <th (click)="sort('price')">Price &nbsp; <i class="fa fa-sort"></i></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of filteredProducts">
+        <tr
+            *ngFor="let p of filteredProducts | orderBy: key: reverse | paginate: {itemsPerPage: itemsPerPage, currentPage:p}">
             <td>{{ p.title }}</td>
             <td>{{ p.price }}</td>
             <td>
@@ -22,3 +23,16 @@
         </tr>
     </tbody>
 </table>
+<div id="paginationControls">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<div id="itemsPerPage">
+    <label>Items per page:
+        <select [(ngModel)]="itemsPerPage" class="form-select" aria-label="Default select example">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
+    </label>
+</div>

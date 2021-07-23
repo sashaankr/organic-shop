@@ -14,6 +14,8 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   items: Product[] = [];
   subscription: Subscription;
   itemCount: number;
+  p: number;
+  itemsPerPage: number = 5;
 
   constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll().snapshotChanges().subscribe(products => {
@@ -46,6 +48,13 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+  }
+
+  key: string = '';
+  reverse: boolean = false;
+  sort(key) {
+    this.key = key;
+    this.reverse = !this.reverse
   }
 
   ngOnDestroy() {

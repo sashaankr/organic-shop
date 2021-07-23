@@ -28,6 +28,8 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './category.service';
 import { ProductService } from './product.service';
+import { OrderModule } from 'ngx-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { ProductService } from './product.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    OrderModule,
+    NgxPaginationModule,
     CustomFormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
