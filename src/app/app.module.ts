@@ -32,6 +32,7 @@ import { OrderModule } from 'ngx-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './shopping-cart.service';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
     ]),
     NgbModule
   ],
-  providers: [AuthService, AuthGuardService, UserService, AdminAuthGuardService, CategoryService, ProductService],
+  providers: [AuthService, AuthGuardService, UserService, AdminAuthGuardService, CategoryService, ProductService, ShoppingCartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
