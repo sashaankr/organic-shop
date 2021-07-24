@@ -21,7 +21,9 @@ export class ShoppingCartService {
   async getCart(): Promise<Observable<ShoppingCart>> {
     let cartId = await this.getOrCreateCartId();
     let fireBaseCart = this.db.object('/shopping-carts/' + cartId) as AngularFireObject<ShoppingCart>;
-    return fireBaseCart.valueChanges().pipe(map(x => new ShoppingCart(x.items)));
+    return fireBaseCart.valueChanges().pipe(map(x => {
+      return new ShoppingCart(x.items)
+    }));
   }
 
   private getItem(cartId: string, productId: string) {
