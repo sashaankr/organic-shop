@@ -6,17 +6,36 @@
     <table class="table">
         <thead>
             <tr>
+                <th></th>
                 <th>Product</th>
                 <th>Quantity</th>
-                <th></th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let productId of cart.productIds">
+                <td>
+                    <div [style.backgroundImage]="'url(' + cart.items[productId].product.imageUrl + ')'"
+                        class="thumbnail"></div>
+                </td>
                 <td>{{ cart.items[productId].product.title}}</td>
-                <td>{{ cart.items[productId].quantity}}</td>
-                <td></td>
+                <td>
+                    <product-quantity [product]="cart.items[productId].product" [shopping-cart]="cart">
+                    </product-quantity>
+                </td>
+                <td class="text-right">{{ cart.items[productId].product.price * cart.items[productId].quantity |
+                    currency: 'INR':true}}
+                </td>
             </tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th class="text-right">{{ cart.totalPrice | currency: 'INR':true }}</th>
+            </tr>
+        </tfoot>
     </table>
-</ng-container>
+    <ng-container>
+        <button (click)="clearCart()" class="btn btn-danger btn-sm">Clear Shopping Cart</button>
