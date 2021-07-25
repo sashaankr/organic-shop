@@ -1,7 +1,7 @@
 export class Product {
-    title: string = "";
+    title: string;
     price: number;
-    category: string = "";
-    imageUrl: string = "";
-    key?: string = "";
+    category?: string;
+    imageUrl: string;
+    key?: string;
 }
