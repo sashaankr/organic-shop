@@ -7,14 +7,14 @@
                 {{ cart.items[productId].quantity }} x {{ cart.items[productId].product.title }}
                 <div class="float-end">
                     {{ cart.items[productId].product.price * cart.items[productId].quantity |
-                    currency: 'INR':true}}
+                    currency: 'INR'}}
                 </div>
             </li>
             <li class="list-group-item fw-bold">
                 Total
                 <div class="float-end">
                     {{cart.totalPrice |
-                    currency: 'INR':true}}
+                    currency: 'INR'}}
                 </div>
             </li>
         </ul>

@@ -25,7 +25,7 @@
                     </product-quantity>
                 </td>
                 <td class="text-right">{{ cart.items[productId].product.price * cart.items[productId].quantity |
-                    currency: 'INR':true}}
+                    currency: 'INR'}}
                 </td>
             </tr>
         </tbody>
@@ -34,7 +34,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th class="text-right">{{ cart.totalPrice | currency: 'INR':true }}</th>
+                <th class="text-right">{{ cart.totalPrice | currency: 'INR'}}</th>
             </tr>
         </tfoot>
     </table>
