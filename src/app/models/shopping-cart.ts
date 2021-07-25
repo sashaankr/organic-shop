@@ -5,7 +5,10 @@ export class ShoppingCart {
     constructor(public items: any) { }
 
     get productIds() {
-        return Object.keys(this.items)
+        if (this.items == null || this.items == undefined)
+            return [];
+        else
+            return Object.keys(this.items)
     }
 
     get totalItemsCount() {
@@ -26,8 +29,11 @@ export class ShoppingCart {
     }
 
     getQuantity(product: Product) {
-        if (this.items == null || this.items == undefined) return 0;
-        let item = this.items[product.key]
-        return item ? item.quantity : 0;
+        if (this.items == null || this.items == undefined)
+            return 0;
+        else {
+            let item = this.items[product.key]
+            return item ? item.quantity : 0;
+        }
     }
 }
