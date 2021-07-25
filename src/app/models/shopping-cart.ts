@@ -26,6 +26,7 @@ export class ShoppingCart {
     }
 
     getQuantity(product: Product) {
+        if (this.items == null || this.items == undefined) return 0;
         let item = this.items[product.key]
         return item ? item.quantity : 0;
     }
