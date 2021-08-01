@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/category.service';
 import { ProductService } from 'src/app/product.service';
 import { take } from 'rxjs/operators';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-form',
@@ -17,7 +18,8 @@ export class ProductFormComponent implements OnInit {
   constructor(private categoryService: CategoryService,
     private productService: ProductService,
     private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private modalService: NgbModal) {
     this.categories$ = categoryService.getCategories();
     this.id = this.route.snapshot.paramMap.get('id')
     if (this.id) this.productService.get(this.id).valueChanges().pipe(take(1)).subscribe(p => this.product = p)
@@ -30,7 +32,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   delete() {
-    if (!confirm('Are you sure you want to delete this product?')) return;
     this.productService.delete(this.id);
     this.router.navigate(['/admin/products']);
   }
@@ -38,4 +39,11 @@ export class ProductFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  open(content) {
+    this.modalService.open(content, { centered: true }).result.then((result) => {
+      if (result != 'Yes') return;
+      this.delete();
+    }, (reason) => {
+    });
+  }
 }
