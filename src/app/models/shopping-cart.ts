@@ -23,7 +23,7 @@ export class ShoppingCart {
     get totalPrice() {
         let sum = 0;
         for (let productId in this.items) {
-            sum += this.items[productId].product.price + this.items[productId].quantity;
+            sum += this.items[productId].product.price * this.items[productId].quantity;
         }
         return sum;
     }
