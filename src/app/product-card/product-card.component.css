@@ -1,5 +1,10 @@
 .card {margin-bottom: 30px;}
 
+.card:hover{
+    transition: transform .2s;
+    transform: scale(1.05)
+}
+
 .card-footer {
     padding: 0;
 }
