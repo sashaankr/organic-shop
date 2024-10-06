@@ -5,7 +5,6 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CustomFormsModule } from 'ng2-validation';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -64,7 +63,6 @@ import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-c
     AngularFireAuthModule,
     OrderModule,
     NgxPaginationModule,
-    CustomFormsModule,
     RouterModule.forRoot([
       { path: '', component: ProductsComponent },
       { path: 'products', component: ProductsComponent },
