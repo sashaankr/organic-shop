@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { GoogleAuthProvider } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase/compat/app';
 import { Observable } from 'rxjs/internal/Observable';
@@ -25,7 +26,7 @@ export class AuthService {
   login() {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
-    this.afAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider());
+    this.afAuth.signInWithPopup(new GoogleAuthProvider());
   }
 
   logout() {
