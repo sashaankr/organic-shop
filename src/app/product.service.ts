@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) {}
 
   create(product) {
     return this.db.list('/products').push(product);
@@ -17,7 +16,7 @@ export class ProductService {
   }
 
   get(productId) {
-    return this.db.object('/products/' + productId)
+    return this.db.object('/products/' + productId);
   }
 
   update(productId, product) {
@@ -25,6 +24,6 @@ export class ProductService {
   }
 
   delete(productId) {
-    return this.db.object('/products/' + productId).remove()
+    return this.db.object('/products/' + productId).remove();
   }
 }

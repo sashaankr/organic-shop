@@ -5,15 +5,17 @@
 $primary-color: #88d62e;
 $primary-color-hover: #88d62e;
 
-body { 
-  padding-top: 80px; 
+body {
+  padding-top: 80px;
 }
 
-h1, h2, h3 { 
+h1,
+h2,
+h3 {
   margin-bottom: 1.5rem;
 }
 
-.navbar { 
+.navbar {
   border-bottom: 3px solid #e7e7e7;
 }
 
@@ -21,7 +23,8 @@ h1, h2, h3 {
   color: $primary-color;
 }
 
-.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
   color: $primary-color-hover;
 }
 
@@ -40,7 +43,8 @@ h1, h2, h3 {
   border-color: $primary-color-hover;
 }
 
-.btn-primary.disabled, .btn-primary:disabled {
+.btn-primary.disabled,
+.btn-primary:disabled {
   background-color: $primary-color;
   border-color: $primary-color;
 }

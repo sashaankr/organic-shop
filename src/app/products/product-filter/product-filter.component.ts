@@ -4,7 +4,7 @@ import { CategoryService } from 'src/app/category.service';
 @Component({
   selector: 'product-filter',
   templateUrl: './product-filter.component.html',
-  styleUrls: ['./product-filter.component.css']
+  styleUrls: ['./product-filter.component.css'],
 })
 export class ProductFilterComponent implements OnInit {
   categories$;
@@ -14,7 +14,5 @@ export class ProductFilterComponent implements OnInit {
     this.categories$ = categoryService.getCategories();
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

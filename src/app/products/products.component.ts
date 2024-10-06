@@ -10,7 +10,7 @@ import { ShoppingCart } from '../models/shopping-cart';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
@@ -19,37 +19,49 @@ export class ProductsComponent implements OnInit {
 
   category: string;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private shoppingCartService: ShoppingCartService) { }
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private shoppingCartService: ShoppingCartService
+  ) {}
 
   async ngOnInit() {
-    this.productService.getAll().snapshotChanges().pipe(switchMap(products => {
-      products.forEach((product) => {
-        let newProduct = product as any
-        this.products.push(this.buildProductObject(newProduct.payload.val().title,
-          newProduct.payload.val().category,
-          newProduct.payload.val().price,
-          newProduct.payload.val().imageUrl,
-          newProduct.key));
-      });
-      return this.route.queryParamMap;
-    }))
-      .subscribe(params => {
+    this.productService
+      .getAll()
+      .snapshotChanges()
+      .pipe(
+        switchMap((products) => {
+          products.forEach((product) => {
+            let newProduct = product as any;
+            this.products.push(
+              this.buildProductObject(
+                newProduct.payload.val().title,
+                newProduct.payload.val().category,
+                newProduct.payload.val().price,
+                newProduct.payload.val().imageUrl,
+                newProduct.key
+              )
+            );
+          });
+          return this.route.queryParamMap;
+        })
+      )
+      .subscribe((params) => {
         this.category = params.get('category');
-        this.filteredProducts = (this.category) ? this.products.filter(p => p.category === this.category) : this.products;
+        this.filteredProducts = this.category
+          ? this.products.filter((p) => p.category === this.category)
+          : this.products;
       });
     this.cart$ = await this.shoppingCartService.getCart();
   }
 
   buildProductObject(title, category, price, imageUrl, key) {
-    let product = new Product()
-    product.title = title
-    product.category = category
-    product.price = price
-    product.imageUrl = imageUrl
-    product.key = key
-    return product
+    let product = new Product();
+    product.title = title;
+    product.category = category;
+    product.price = price;
+    product.imageUrl = imageUrl;
+    product.key = key;
+    return product;
   }
-
-
-
 }

@@ -11,7 +11,7 @@ import { ShoppingCartService } from '../shopping-cart.service';
 @Component({
   selector: 'app-check-out',
   templateUrl: './check-out.component.html',
-  styleUrls: ['./check-out.component.css']
+  styleUrls: ['./check-out.component.css'],
 })
 export class CheckOutComponent implements OnInit, OnDestroy {
   shipping: any = {};
@@ -20,12 +20,19 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   cart: ShoppingCart;
   cartSubscription: Subscription;
 
-  constructor(private shoppingCartService: ShoppingCartService, private orderService: OrderService, private authService: AuthService, private router: Router) { }
+  constructor(
+    private shoppingCartService: ShoppingCartService,
+    private orderService: OrderService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   async ngOnInit() {
     let cart$ = await this.shoppingCartService.getCart();
-    this.cartSubscription = cart$.subscribe(cart => this.cart = cart);
-    this.userSubscription = this.authService.user$.subscribe(user => this.userId = user.uid);
+    this.cartSubscription = cart$.subscribe((cart) => (this.cart = cart));
+    this.userSubscription = this.authService.user$.subscribe(
+      (user) => (this.userId = user.uid)
+    );
   }
 
   async placeOrder() {
@@ -33,15 +40,15 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       userId: this.userId,
       datePlaced: new Date().getTime(),
       shipping: this.shipping,
-      items: this.buildOrderItems()
-    }
+      items: this.buildOrderItems(),
+    };
     let result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
   }
 
   buildOrderItems() {
     let items: OrderItem[] = [];
-    this.cart.productIds.forEach(productId => {
+    this.cart.productIds.forEach((productId) => {
       let product = new Product();
       let item = new OrderItem();
       product.title = this.cart.items[productId].product.title;
@@ -49,7 +56,9 @@ export class CheckOutComponent implements OnInit, OnDestroy {
       product.price = this.cart.items[productId].product.price;
       item.product = product;
       item.quantity = this.cart.items[productId].quantity;
-      item.totalPrice = this.cart.items[productId].product.price * this.cart.items[productId].quantity;
+      item.totalPrice =
+        this.cart.items[productId].product.price *
+        this.cart.items[productId].quantity;
       items.push(item);
     });
     return items;
@@ -59,5 +68,4 @@ export class CheckOutComponent implements OnInit, OnDestroy {
     this.cartSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
   }
-
 }

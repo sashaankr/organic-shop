@@ -9,22 +9,23 @@ import { ShoppingCartService } from '../shopping-cart.service';
 @Component({
   selector: 'bs-navbar',
   templateUrl: './bs-navbar.component.html',
-  styleUrls: ['./bs-navbar.component.css']
+  styleUrls: ['./bs-navbar.component.css'],
 })
 export class BsNavbarComponent implements OnInit {
   appUser: AppUser;
-  cart$: Observable<ShoppingCart>
+  cart$: Observable<ShoppingCart>;
 
-
-  constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) { }
+  constructor(
+    private auth: AuthService,
+    private shoppingCartService: ShoppingCartService
+  ) {}
 
   async ngOnInit() {
-    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.cart$ = await this.shoppingCartService.getCart()
+    this.auth.appUser$.subscribe((appUser) => (this.appUser = appUser));
+    this.cart$ = await this.shoppingCartService.getCart();
   }
 
   logout() {
-    this.auth.logout()
+    this.auth.logout();
   }
-
 }

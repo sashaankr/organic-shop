@@ -1,2 +1,6 @@
-#paginationControls {display:inline-block;} 
-#itemsPerPage {display:inline-block;} 
+#paginationControls {
+  display: inline-block;
+}
+#itemsPerPage {
+  display: inline-block;
+}
