@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CategoryService } from 'src/app/category.service';
-import { ProductService } from 'src/app/product.service';
+import { CategoryService } from 'src/app/shared/services/category.service';
+import { ProductService } from 'src/app/shared/services/product.service';
 import { take } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 

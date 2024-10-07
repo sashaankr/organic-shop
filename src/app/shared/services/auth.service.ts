@@ -4,7 +4,7 @@ import { GoogleAuthProvider } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import * as firebase from 'firebase/compat/app';
 import { Observable } from 'rxjs/internal/Observable';
-import { AppUser } from './models/app-user';
+import { AppUser } from '../models/app-user';
 import { UserService } from './user.service';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';

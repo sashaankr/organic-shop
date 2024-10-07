@@ -4,7 +4,7 @@ import {
   AngularFireObject,
 } from '@angular/fire/compat/database';
 import * as firebase from 'firebase/compat/app';
-import { AppUser } from './models/app-user';
+import { AppUser } from '../models/app-user';
 
 @Injectable({
   providedIn: 'root',
