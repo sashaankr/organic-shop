@@ -2,7 +2,7 @@
   cursor: pointer;
 }
 
-.dropdown .dropdown-menu {
+/* .dropdown .dropdown-menu {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
@@ -16,7 +16,7 @@
 }
 
 .dropdown.show .dropdown-menu {
-  /* For Bootstrap 4, use .dropdown.show instead of .dropdown.open */
+  For Bootstrap 4, use .dropdown.show instead of .dropdown.open
   max-height: 300px;
   opacity: 1;
-}
+} */
