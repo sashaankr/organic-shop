@@ -2,10 +2,10 @@
   margin-bottom: 30px;
 }
 
-.card:hover {
+/* .card:hover {
   transition: transform 0.2s;
   transform: scale(1.05);
-}
+} */
 
 .card-footer {
   padding: 0;
