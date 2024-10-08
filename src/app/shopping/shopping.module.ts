@@ -9,6 +9,7 @@ import { ProductFilterComponent } from './components/products/product-filter/pro
 import { ProductsComponent } from './components/products/products.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     MyOrdersComponent,
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
+    ShippingFormComponent,
   ],
   imports: [
     SharedModule,
