@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-success',
@@ -6,7 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-success.component.css'],
 })
 export class OrderSuccessComponent implements OnInit {
-  constructor() {}
+  timeLeft: number = 5;
+  timerId: any;
 
-  ngOnInit(): void {}
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.startCountdown();
+  }
+
+  startCountdown(): void {
+    const countdownElem = document.getElementById('countdown');
+    if (countdownElem) {
+      countdownElem.innerText = `${this.timeLeft}`;
+      this.timerId = setInterval(() => {
+        if (this.timeLeft <= 0) {
+          clearInterval(this.timerId);
+          this.redirect();
+        } else {
+          this.timeLeft--;
+          countdownElem.innerText = `${this.timeLeft}`;
+        }
+      }, 1000);
+    }
+  }
+
+  redirect(): void {
+    this.router.navigate(['/']);
+  }
 }
