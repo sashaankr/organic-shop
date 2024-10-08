@@ -9,11 +9,12 @@ import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OrderModule } from 'ngx-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminAuthGuardService } from 'src/app/admin/services/admin-auth-guard.service';
 import { environment } from 'src/environments/environment';
-import { AdminAuthGuardService } from './admin-auth-guard.service';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminModule } from './admin/admin.module';
+import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
+import { ProductFormComponent } from './admin/components/product-form/product-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
@@ -25,9 +26,9 @@ import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductsComponent } from './products/products.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
+import { SharedModule } from './shared/shared.module';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -39,15 +40,13 @@ import { SharedModule } from './shared/shared.module';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
-    ProductFormComponent,
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
+    AdminModule,
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
