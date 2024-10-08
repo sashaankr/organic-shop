@@ -23,16 +23,12 @@ export class OrderSuccessComponent implements OnInit {
       this.timerId = setInterval(() => {
         if (this.timeLeft <= 0) {
           clearInterval(this.timerId);
-          this.redirect();
+          this.router.navigate(['/']);
         } else {
           this.timeLeft--;
           countdownElem.innerText = `${this.timeLeft}`;
         }
       }, 1000);
     }
-  }
-
-  redirect(): void {
-    this.router.navigate(['/']);
   }
 }
